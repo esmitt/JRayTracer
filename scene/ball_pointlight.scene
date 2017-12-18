@@ -1,0 +1,56 @@
+#
+# Ray Tracing Scene -- Rui Wang
+# 
+# ----------RENDERING PARAMETERS------------------------
+#
+# image			filename.png	width height	exposure
+# camera		eyex eyey eyez	tarx tary tarz	upx upy upz		fovy
+# background	r g b
+# ambient		r g b
+# maxdepth		ndepth
+#
+# ----------LIGHTING----------------------------------
+#
+# light			point	x y z	r g b
+# light			spot	fromx fromy fromz	tox toy toz		exponent	cutoff_angle	r g b
+# light			area	x y z	quad_size	xsample ysample		r g b
+#
+# ----------MATERIAL----------------------------------
+# material		diffuse		ka.r ka.g ka.b	kd.r kd.g kd.b
+# material		specular	ka.r ka.g ka.b	kd.r kd.g kd.b	ks.r ks.g ks.b	phong_exponent
+# material		mirror		kr.r kr.g kr.b
+# material		glass		kr.r kr.g kr.b	kt.r kt.g kt.b	ior
+# material		super		ka.r ka.g ka.b	kd.r kd.g kd.b	ks.r ks.g ks.b	phong_exponent	kr.r kr.g kr.b	kt.r kt.g kt.b	ior
+#
+# ----------SHAPE-------------------------------------
+#
+# shape			sphere		x y z	radius
+# shape			triangle 	p0.x p0.y p0.z	p1.x p1.y p1.z	p2.x p2.y p2.z
+# shape			triangle_n	p0.x p0.y p0.z	p1.x p1.y p1.z	p2.x p2.y p2.z	n0.x n0.y n0.z	n1.x n1.y n1.z	n2.x n2.y n2.z
+# shape			tri_mesh	filename.trimesh
+# shape			checkerboard	x y z	quad_size	xtile ytile 
+#
+# ----------------------------------------------------
+
+#
+# --- this is a simple scene a specular ball and a point light ---
+#
+
+image		ball_pointlight.png	640 480		1.0
+camera		8 5 9	0.25 0 0.5	0 1 0	30.0
+background	0.3 0.3 0.3
+ambient		0.01 0.01 0.01
+maxdepth	5
+
+light		point	10 10 5		100 96 88
+# light		spot	10 10 5		0 0 0	10	30	100 96 88
+
+material	specular 1.0 0.2 0.2	1.0 0.2 0.2	2 2 2	20.0
+shape		sphere	-0.25 0 0.25	1.25
+
+material	diffuse 1.0 1.0 0.2		1.0 1.0 0.2
+shape		plane	0 -1.25 0		0 1 0
+
+#shape		triangle -10 -1.25 10	10 -1.25 10		10 -1.25 -10
+#shape		triangle -10 -1.25 10	10 -1.25 -10	-10 -1.25 -10
+

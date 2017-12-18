@@ -1,0 +1,25 @@
+#
+# --- this is a simple scene with a glass ball and a specular ball---
+#
+
+image		ball_mirror.png		640 480		1.0
+camera		8 5 9	0.25 0 0.5	0 1 0	30.0
+background	0.0 0.0 0.0
+ambient		0.01 0.01 0.01
+maxdepth	5
+
+light		point	10 10 5		100 96 88
+# light		spot	10 10 5		0 0 0	10 30	100 96 88
+
+material	specular	1.0 0.2 0.2	1.0 0.2 0.2		2 2 2	20.0
+shape		sphere 	1.25 0 -1.25			1.25
+material	mirror	1 1 1
+# material	super	0 0 0		0.05 0.05 0.05		0.1 0.1 0.1		20.0	1 1 1		0 0 0	1.5
+shape		sphere 	-1.25 0 1.25	1.25
+
+material	diffuse	1.0 1.0 0.2		1.0 1.0 0.2
+shape		plane	0 -1.25 0		0 1 0
+
+#shape		triangle -10 -1.25 10	10 -1.25 10		10 -1.25 -10
+#shape		triangle -10 -1.25 10	10 -1.25 -10	-10 -1.25 -10
+
